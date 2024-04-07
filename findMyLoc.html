@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location</title>
+  </head>
+  <body>
+    <h2>To Find your Location</h2>
+    <button>Click Here!</button>
+    <br />
+    <br />
+    <form
+      action="https://www.google.com/maps/place/search"
+      method="get"
+      target="_blank"
+    >
+      <input
+        type="search"
+        name="q"
+        placeholder="Latitude, Longitude"
+        autocomplete="off"
+      />
+      <button>Search</button>
+    </form>
+    <script>
+      const body = document.querySelector("body");
+      const btn = document.querySelector("button");
+      let input = document.querySelector("input");
+      btn.addEventListener("click", function (event) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          input.value =
+            position.coords.latitude + ", " + position.coords.longitude;
+        });
+      });
+    </script>
+  </body>
+</html>
